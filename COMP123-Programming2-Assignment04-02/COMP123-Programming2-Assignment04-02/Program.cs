@@ -1,11 +1,11 @@
 ﻿/*
  * studentName:Bin Liang | studentNumber:300788322
- * Date last Modified:March 14th,2015
+ * Date last Modified:March 16th,2015
  * Program description:COMP123_Assignment04,Array Practice-Airline Reservations System.
  * Revision	History:
  * 1.Debug successfully.
  * 2.Never assign a seat that has already been assigned.
- *
+ * 3.Change seatsBooked into firstSeatsBooked and economySeatsBooked.
  */
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,8 @@ namespace COMP123_Programming2_Assignment04_02
             bool[] seats = new bool[10];
             
             //To keep a separate list of seats taken         
-            List<int> seatsBooked = new List<int>();
+            List<int> firstSeatsBooked = new List<int>();
+            List<int> economySeatsBooked = new List<int>();
             int inputI = 0;
             char inputS = ' ';
             bool quit = false;
@@ -40,31 +41,31 @@ namespace COMP123_Programming2_Assignment04_02
                     case 1:                                                
                         int seatAssignF; //Variable moved from main loop
                         //Are there any seats booked already or this is the first?
-                        if (seatsBooked.Count == 0) //if this is the first seat to be booked...
+                        if (firstSeatsBooked.Count == 0) //if this is the first seat to be booked...
                         {
                             seatAssignF = rand.Next(0, 5);
                             seats[seatAssignF] = true;
-                            seatsBooked.Add(seatAssignF);  //Add seat to the list of booked seats.                           
+                            firstSeatsBooked.Add(seatAssignF);  //Add seat to the list of booked seats.                           
                         }
                         else
                         {
                             do //while there are available seats and current seat has not being assigned before.
                             {
                                 seatAssignF = rand.Next(0, 5);
-                                if (!seatsBooked.Contains(seatAssignF)) //if seatAssingF is not booked.
+                                if (!firstSeatsBooked.Contains(seatAssignF)) //if seatAssingF is not booked.
                                 {
                                     seats[seatAssignF] = true;                                   
                                 }
                                 //repeat while the random seat number is already booked and there are  avaialable seats
-                            } while (seatsBooked.Contains(seatAssignF) && seatsBooked.Count < 5);
+                            } while (firstSeatsBooked.Contains(seatAssignF) && firstSeatsBooked.Count < 5);
 
-                            if (seatsBooked.Count < 5) //if seatsBooked list is not full for First Class
+                            if (firstSeatsBooked.Count < 5) //if seatsBooked list is not full for First Class
                             {
-                                seatsBooked.Add(seatAssignF); //Add current random-generated seat to the list.
+                                firstSeatsBooked.Add(seatAssignF); //Add current random-generated seat to the list.
                             } 
                         }
                         //
-                        if (seatsBooked.Count >= 5)
+                        if (firstSeatsBooked.Count > 5)
                         {
                             Console.WriteLine("All seats for First Class are booked");
                             Console.WriteLine("If it’s acceptable to be placed in the economy-class?");
@@ -90,30 +91,30 @@ namespace COMP123_Programming2_Assignment04_02
                         break;
                     case 2:
                         int seatAssignE;
-                        if (seatsBooked.Count == 0) //if this is the economy seat to be booked...
+                        if (economySeatsBooked.Count == 0) //if this is the economy seat to be booked...
                         {
                             seatAssignE = rand.Next(5, 10);
                             seats[seatAssignE] = true;
-                            seatsBooked.Add(seatAssignE);  //Add seat to the list of booked seats.                           
+                            economySeatsBooked.Add(seatAssignE);  //Add seat to the list of booked seats.                           
                         }
                         else
                         {
                             do //while there are available seats and current seat has not being assigned before.
                             {
                                 seatAssignE = rand.Next(5, 10);
-                                if (!seatsBooked.Contains(seatAssignE)) //if seatAssingE is not booked.
+                                if (!economySeatsBooked.Contains(seatAssignE)) //if seatAssingE is not booked.
                                 {
                                     seats[seatAssignE] = true;
                                 }
                                 //repeat while the random seat number is already booked and there are  avaialable seats
-                            } while (seatsBooked.Contains(seatAssignE) && seatsBooked.Count < 5);
+                            } while (economySeatsBooked.Contains(seatAssignE) && economySeatsBooked.Count < 5);
 
-                            if (seatsBooked.Count < 5) //if seatsBooked list is not full for Economy Class
+                            if (economySeatsBooked.Count < 5) //if seatsBooked list is not full for Economy Class
                             {
-                                seatsBooked.Add(seatAssignE); //Add current random-generated seat to the list.
+                                economySeatsBooked.Add(seatAssignE); //Add current random-generated seat to the list.
                             }
                         }
-                        if (seatsBooked.Count >= 5)
+                        if (economySeatsBooked.Count >= 5)
                         {
                             Console.WriteLine("All seats for Economy Class are booked");
                             Console.WriteLine("If it’s acceptable to be placed in the First-class?");
