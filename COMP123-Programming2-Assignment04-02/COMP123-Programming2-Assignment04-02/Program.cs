@@ -1,11 +1,12 @@
 ﻿/*
  * studentName:Bin Liang | studentNumber:300788322
- * Date last Modified:March 16th,2015
+ * Date last Modified:March 20th,2015
  * Program description:COMP123_Assignment04,Array Practice-Airline Reservations System.
  * Revision	History:
  * 1.Debug successfully.
  * 2.Never assign a seat that has already been assigned.
  * 3.Change seatsBooked into firstSeatsBooked and economySeatsBooked.
+ * 4.Improve output!
  */
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,12 @@ namespace COMP123_Programming2_Assignment04_02
             while (!quit)
             {
                 Console.Clear();
-                Console.WriteLine("Please type [1] for First Class" +
-                                 " \nPlease type [2] for Economy" +
-                                  "\nPlease type [3] to exit the order system");
+                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                Console.WriteLine("+++           Please type [1] for First Class                 +++");
+                Console.WriteLine("+++           Please type [2] for Economy Class               +++");
+                Console.WriteLine("+++           Please type [3] to exit the order system        +++");
+                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                Console.Write("You entered: ");
                 inputI = Int32.Parse(Console.ReadLine());
                 switch (inputI)
                 {
@@ -65,26 +69,34 @@ namespace COMP123_Programming2_Assignment04_02
                             } 
                         }
                         //
-                        if (firstSeatsBooked.Count > 5)
+                        if (firstSeatsBooked.Count >= 5)
                         {
-                            Console.WriteLine("All seats for First Class are booked");
-                            Console.WriteLine("If it’s acceptable to be placed in the economy-class?");
-                            Console.WriteLine("Please type [2] for Economy Class" +
-                                 " \nPlease type [n] to exit the order systemy");
-                            inputS = Char.Parse(Console.ReadLine());
-                            if (inputS == '2')
+                            Console.WriteLine("All seats for First Class are booked!");
+                            Console.WriteLine();
+                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            Console.WriteLine("+++   If it’s acceptable to be placed in the economy-class?   +++");
+                            Console.WriteLine("+++   Please type [y] for Economy Class                       +++");                            
+                            Console.WriteLine("+++   Please type [n] to exit the order systemy               +++");
+                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            Console.Write("You entered: ");
+                            inputS = Char.Parse(Console.ReadLine());                           
+                            if (inputS == 'y')
                             {
                                 Console.WriteLine("Press enter to continue...");
                             }
                             else
                             {
-                                Console.WriteLine("Next flight leaves in 3 hours.");
-                                Console.WriteLine("Press enter to continue...");
+                                Console.WriteLine();
+                                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                Console.WriteLine("+++           Next flight leaves in 3 hours.                  +++");
+                                Console.WriteLine("+++           Press enter to continue...                      +++");
+                                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Your seat: {0}", seatAssignF + 1);
+                            Console.WriteLine("Your seat is: {0}", seatAssignF + 1);
+                            Console.WriteLine();
                             Console.WriteLine("Press enter to continue...");
                         }
                         Console.ReadLine();
@@ -117,24 +129,31 @@ namespace COMP123_Programming2_Assignment04_02
                         if (economySeatsBooked.Count >= 5)
                         {
                             Console.WriteLine("All seats for Economy Class are booked");
-                            Console.WriteLine("If it’s acceptable to be placed in the First-class?");
-                            Console.WriteLine("Please type [y] for First Class" +
-                                 " \nPlease type [n] to exit the order systemy");
+                            Console.WriteLine();
+                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            Console.WriteLine("+++   If it’s acceptable to be placed in the First-class?     +++");
+                            Console.WriteLine("+++   Please type [y] for First Class                         +++");
+                            Console.WriteLine("+++   Please type [n] to exit the order systemy               +++");
+                            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                            Console.Write("You entered: ");
                             inputS = Char.Parse(Console.ReadLine());
                             if (inputS == 'y')
                             {
-                                Console.WriteLine("Please type [1] for First-class.");
                                 Console.WriteLine("Press enter to continue...");
                             }
                             else
                             {
-                                Console.WriteLine("Next flight leaves in 3 hours.");
-                                Console.WriteLine("Press enter to continue...");
+                                Console.WriteLine();
+                                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                                Console.WriteLine("+++           Next flight leaves in 3 hours.                  +++");
+                                Console.WriteLine("+++           Press enter to continue...                      +++");
+                                Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Your seat: {0}", seatAssignE + 1);
+                            Console.WriteLine("Your seat is: {0}", seatAssignE + 1);
+                            Console.WriteLine();
                             Console.WriteLine("Press enter to continue...");
                         }
                         Console.ReadLine();
@@ -154,10 +173,12 @@ namespace COMP123_Programming2_Assignment04_02
 
         private static void waitForAnyKey()
         {
-            Console.Write("\n");
-            Console.WriteLine("++++++++++++++++++++++++++++++");
-            Console.WriteLine("Please hit any key to exit....");
+            Console.WriteLine();
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine("+++                  Press any key to continue...             +++");
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
             Console.ReadKey();
+            Console.Clear();
         }
     }
 }
